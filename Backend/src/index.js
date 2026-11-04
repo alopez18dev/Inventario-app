@@ -1,0 +1,24 @@
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import pool from './db.js';
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/health', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT NOW() AS hora');
+        res.json({ estado: 'ok', hora_db: result.rows[0].hora });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ estado: 'error', mensaje: 'No se pudo conectar a la base de datos' });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
