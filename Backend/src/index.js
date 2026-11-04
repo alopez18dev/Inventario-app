@@ -3,11 +3,15 @@ import express from 'express';
 import cors from 'cors';
 import pool from './db.js';
 import authRoutes from './routes/auth.js';
+import categoriasRoutes from './routes/categorias.js';
+import productosRoutes from './routes/productos.js';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/categorias', categoriasRoutes);
+app.use('/api/productos', productosRoutes);
 app.use('/api/auth', authRoutes);
 
 app.get('/api/health', async (req, res) => {
