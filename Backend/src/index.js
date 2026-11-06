@@ -5,6 +5,8 @@ import pool from './db.js';
 import authRoutes from './routes/auth.js';
 import categoriasRoutes from './routes/categorias.js';
 import productosRoutes from './routes/productos.js';
+import movimientosRoutes from './routes/movimientos.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -13,6 +15,9 @@ app.use(express.json());
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/movimientos', movimientosRoutes);
+app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+app.use(cookieParser());
 
 app.get('/api/health', async (req, res) => {
     try {

@@ -1,0 +1,126 @@
+:root {
+  --color-primario: #2563eb;
+  --color-primario-oscuro: #1d4ed8;
+  --color-fondo: #f3f4f6;
+  --color-tarjeta: #ffffff;
+  --color-texto: #111827;
+  --color-texto-suave: #6b7280;
+  --color-borde: #d1d5db;
+  --color-error: #b91c1c;
+  --color-error-fondo: #fee2e2;
+  --radio: 8px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.auth-tarjeta {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px;
+  background: var(--color-tarjeta);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-tarjeta h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: 2px solid var(--color-primario);
+  border-color: transparent;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radio);
+  background: var(--color-primario);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--color-primario-oscuro);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensaje-error {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--color-error-fondo);
+  color: var(--color-error);
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+}
+
+.auth-cambio {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+
+.enlace {
+  padding: 0;
+  background: none;
+  color: var(--color-primario);
+  font-size: inherit;
+  text-decoration: underline;
+}
+
+.enlace:hover:not(:disabled) {
+  background: none;
+  color: var(--color-primario-oscuro);
+}
+
+.inicio {
+  padding: 32px;
+}
+
+.cargando {
+  padding: 32px;
+  color: var(--color-texto-suave);
+}
