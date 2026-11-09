@@ -1,23 +1,23 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import pool from './db.js';
 import authRoutes from './routes/auth.js';
 import categoriasRoutes from './routes/categorias.js';
 import productosRoutes from './routes/productos.js';
 import movimientosRoutes from './routes/movimientos.js';
-import cookieParser from 'cookie-parser';
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-app.use('/api/categorias', categoriasRoutes);
-app.use('/api/productos', productosRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/movimientos', movimientosRoutes);
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(cookieParser());
+app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/categorias', categoriasRoutes);
+app.use('/api/productos', productosRoutes);
+app.use('/api/movimientos', movimientosRoutes);
 
 app.get('/api/health', async (req, res) => {
     try {
@@ -27,9 +27,9 @@ app.get('/api/health', async (req, res) => {
         console.error(error);
         res.status(500).json({ estado: 'error', mensaje: 'No se pudo conectar a la base de datos' });
     }
-});
+    });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

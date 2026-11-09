@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import Login from './pages/login.jsx';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login.jsx';
+import Layout from './components/Layout.jsx';
+import Productos from './pages/Productos.jsx';
 import { peticion } from './api.js';
 
 function App() {
@@ -31,11 +34,12 @@ function App() {
   }
 
   return (
-    <main className="inicio">
-      <h1>Hola, {usuario.nombre}</h1>
-      <p>Tu rol es: {usuario.rol}</p>
-      <button onClick={cerrarSesion}>Cerrar sesión</button>
-    </main>
+    <Routes>
+      <Route element={<Layout usuario={usuario} onLogout={cerrarSesion} />}>
+        <Route path="/" element={<Productos />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   );
 }
 
