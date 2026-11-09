@@ -12,6 +12,8 @@
   color-scheme: light;
   --color-ok: #166534;
   --color-ok-fondo: #dcfce7;
+  --color-aviso: #92400e;
+  --color-aviso-fondo: #fef3c7;
 }
 
 * {
@@ -301,4 +303,54 @@ input[type='checkbox'] {
 .etiqueta-alerta {
   background: var(--color-error-fondo);
   color: var(--color-error);
+}
+
+.tarjeta {
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.tarjeta h2 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+.tarjeta .mensaje-error,
+.tarjeta .mensaje-exito {
+  margin-bottom: 16px;
+}
+
+.subtitulo {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.formulario-movimiento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.mensaje-exito {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--color-ok-fondo);
+  color: var(--color-ok);
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+}
+
+.etiqueta-salida {
+  background: var(--color-aviso-fondo);
+  color: var(--color-aviso);
+}
+
+.celda-nota {
+  max-width: 260px;
+  overflow-wrap: anywhere;
+  color: var(--color-texto-suave);
 }

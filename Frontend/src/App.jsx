@@ -4,6 +4,7 @@ import Login from './pages/Login.jsx';
 import Layout from './components/Layout.jsx';
 import Productos from './pages/Productos.jsx';
 import { peticion } from './api.js';
+import Movimientos from './pages/Movimientos.jsx';
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -38,6 +39,7 @@ function App() {
       <Route element={<Layout usuario={usuario} onLogout={cerrarSesion} />}>
         <Route path="/" element={<Productos />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/movimientos" element={<Movimientos usuario={usuario} />} />
       </Route>
     </Routes>
   );

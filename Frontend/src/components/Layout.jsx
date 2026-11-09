@@ -8,9 +8,10 @@ function Layout({ usuario, onLogout }) {
             <span className="marca">Inventario</span>
 
             <nav className="barra-nav">
-                <NavLink to="/" end>
-                Productos
-                </NavLink>
+                    <NavLink to="/" end>
+                        Productos
+                    </NavLink>
+                <NavLink to="/movimientos">Movimientos</NavLink>
             </nav>
 
             <div className="barra-usuario">
