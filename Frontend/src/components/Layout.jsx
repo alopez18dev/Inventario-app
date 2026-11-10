@@ -12,6 +12,7 @@ function Layout({ usuario, onLogout }) {
                         Productos
                     </NavLink>
                 <NavLink to="/movimientos">Movimientos</NavLink>
+                {usuario.rol === 'admin' && <NavLink to="/admin">Administración</NavLink>}
             </nav>
 
             <div className="barra-usuario">

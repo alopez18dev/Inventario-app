@@ -5,6 +5,7 @@ import Layout from './components/Layout.jsx';
 import Productos from './pages/Productos.jsx';
 import { peticion } from './api.js';
 import Movimientos from './pages/Movimientos.jsx';
+import Administracion from './pages/Administracion.jsx';
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -38,6 +39,7 @@ function App() {
     <Routes>
       <Route element={<Layout usuario={usuario} onLogout={cerrarSesion} />}>
         <Route path="/" element={<Productos />} />
+        <Route path="/admin" element={usuario.rol === 'admin' ? <Administracion /> : <Navigate to="/" replace />}/>
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/movimientos" element={<Movimientos usuario={usuario} />} />
       </Route>

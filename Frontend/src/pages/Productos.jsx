@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import { peticion } from '../api.js';
-
-const formatoPrecio = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    maximumFractionDigits: 0,
-});
+import { formatoPrecio } from '../formato.js';
 
 function Productos() {
     const [productos, setProductos] = useState([]);
