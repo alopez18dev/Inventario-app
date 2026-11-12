@@ -32,3 +32,16 @@ CREATE TABLE movimientos (
     nota TEXT,
     fecha TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE EXTENSION IF NOT EXISTS unaccent;
+
+CREATE OR REPLACE FUNCTION normalizar_texto(texto TEXT)
+RETURNS TEXT
+LANGUAGE sql
+IMMUTABLE PARALLEL SAFE STRICT
+AS $$
+    SELECT lower(public.unaccent('public.unaccent', texto))
+$$;
+
+CREATE UNIQUE INDEX categorias_nombre_normalizado_idx
+    ON categorias (normalizar_texto(nombre));

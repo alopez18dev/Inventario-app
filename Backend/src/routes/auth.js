@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import pool from '../db.js';
 import { verificarToken } from '../middleware/auth.js';
+import { limitadorLogin, limitadorRegistro } from '../middleware/limites.js';
 
 const router = Router();
 
@@ -15,7 +16,7 @@ const opcionesCookie = {
     path: '/',
 };
 
-router.post('/register', async (req, res) => {
+router.post('/register', limitadorRegistro, async (req, res) => {
     try {
         const { nombre, email, password } = req.body;
 
@@ -49,7 +50,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', limitadorLogin, async (req, res) => {
     try {
         const { email, password } = req.body;
 
