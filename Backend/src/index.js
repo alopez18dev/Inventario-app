@@ -18,6 +18,16 @@ app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 
+// TEMPORAL: borrar después de configurar TRUST_PROXY
+app.get('/api/debug-ip', (req, res) => {
+    res.json({
+        ip: req.ip,
+        ips: req.ips,
+        xForwardedFor: req.headers['x-forwarded-for'],
+        trustProxy: app.get('trust proxy'),
+    });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/productos', productosRoutes);
