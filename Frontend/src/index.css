@@ -67,7 +67,7 @@ input {
   font-size: 1rem;
 }
 
-input:focus {
+input:focus-visible {
   outline: 2px solid var(--color-primario);
   border-color: transparent;
 }
@@ -464,4 +464,49 @@ input[type='checkbox'] {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+
+.casilla {
+  user-select: none;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-password {
+  position: relative;
+  display: flex;
+}
+
+.campo-password input {
+  flex: 1;
+  min-width: 0;
+  padding-right: 44px;
+}
+
+.boton-ojo {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--color-texto-suave);
+}
+
+.boton-ojo:hover:not(:disabled) {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+input::-ms-reveal {
+  display: none;
 }
